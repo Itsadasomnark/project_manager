@@ -80,8 +80,7 @@ class Mainapp(QtWidgets.QMainWindow):
 			json.dump(fileDir, jsonfile,sort_keys=True,indent=4)
 		global path
 		path = fileDir
-		self.update_project()
-		self.update_deparment()
+		self.setup_defaults()
 		self.ui.textEdit.setText(fileDir)
 	
 	def update_project(self):
@@ -322,6 +321,7 @@ class filename_ui(QtWidgets.QMainWindow):
 			os.mkdir('{}/workspace/{}'.format(self.dirname, self.cui.name.text()))
 			app.update_item()
 		self.deleteLater()
+
 def show():
 	global app
 	try:
