@@ -53,7 +53,7 @@ class Mainapp(QtWidgets.QMainWindow):
 		self.ui.department_combo.currentIndexChanged.connect(self.update_task)
 		self.ui.newproject.clicked.connect(self.create_project)
 		self.ui.path_Button.clicked.connect(self.get_path)
-		self.ui.workspace.toggled.connect(self.update_item)
+		self.ui.workspace.toggled.connect(self.update_version)
 		self.ui.Task_combo.currentIndexChanged.connect(self.update_item)
 		self.ui.Listitem.itemSelectionChanged.connect(self.update_version)
 		self.ui.version_combo.currentIndexChanged.connect(self.update_file)
@@ -77,7 +77,7 @@ class Mainapp(QtWidgets.QMainWindow):
 	def get_path(self):
 		fileDir = QtWidgets.QFileDialog.getExistingDirectory()
 		with open('{}/root/root.json'.format(self.path_module), 'w') as jsonfile:
-			json.dump(fileDir, jsonfile,sort_keys=True,indent=4)
+			json.dump(fileDir, jsonfile, sort_keys=True, indent=4)
 		global path
 		path = fileDir
 		self.setup_defaults()
@@ -135,14 +135,6 @@ class Mainapp(QtWidgets.QMainWindow):
 	def update_item(self):
 		task = self.ui.Task_combo.itemData(self.ui.Task_combo.currentIndex(), QtCore.Qt.UserRole)
 		if task != None:
-			if self.ui.workspace.isChecked() == True:
-				task += '/workspace'
-				self.ui.save.setDisabled(False)
-				self.ui.publish_button.setDisabled(False)
-			else:
-				task += '/publish'
-				self.ui.save.setDisabled(True)
-				self.ui.publish_button.setDisabled(True)
 			allitem = os.listdir(task)
 			self.ui.Listitem.blockSignals(True)
 			self.ui.Listitem.clear()
@@ -164,6 +156,9 @@ class Mainapp(QtWidgets.QMainWindow):
 		if self.ui.workspace.isChecked() == True: 
 			self.ui.version_combo.clear()
 			self.ui.Listfile.clear()
+			self.ui.save.setEnabled(True)
+			self.ui.publish_button.setEnabled(True)
+			listitem = listitem + '/workspace'
 			for (root, dirs, files) in os.walk(listitem, topdown=True):
 				for file in files:
 					item = QtWidgets.QListWidgetItem()
@@ -172,6 +167,9 @@ class Mainapp(QtWidgets.QMainWindow):
 					item.setData(QtCore.Qt.UserRole, fullpath)
 					self.ui.Listfile.addItem(item)
 		else:
+			listitem = listitem + '/publish'
+			self.ui.save.setEnabled(False)
+			self.ui.publish_button.setEnabled(False)
 			allversion = os.listdir(listitem)
 			self.ui.version_combo.blockSignals(True)
 			self.ui.version_combo.clear()
@@ -181,6 +179,7 @@ class Mainapp(QtWidgets.QMainWindow):
 				self.ui.version_combo.setItemData(version, fullpath, QtCore.Qt.UserRole)
 			self.ui.version_combo.blockSignals(False)
 			self.ui.version_combo.currentIndexChanged.emit(True)
+		self.ui.textinfo.clear()
 
 	def update_file(self):
 		version = self.ui.version_combo.itemData(self.ui.version_combo.currentIndex(), QtCore.Qt.UserRole)
@@ -257,6 +256,8 @@ class Mainapp(QtWidgets.QMainWindow):
 		item_name = self.ui.Listitem.currentItem().text()
 		file_name = '{}_{}_{}_{}'.format(project, department, task, item_name)
 		savepath = self.ui.Listitem.currentIndex().data(QtCore.Qt.UserRole)
+		if self.ui.workspace.isChecked() == True: 
+			savepath = savepath + '/workspace'
 		file = os.listdir(savepath)
 		count = len(file)+1
 		os.mkdir('{}/V{:03d}'.format(savepath,count))
@@ -268,6 +269,7 @@ class Mainapp(QtWidgets.QMainWindow):
 
 	def publish(self):
 		file = self.ui.Listfile.currentIndex().data(QtCore.Qt.UserRole)
+
 		newfile = file.split('/')[-1]
 		newfile = newfile.replace(file.split('_')[-1],'')
 		publish = file.split('\\')[0]
@@ -313,12 +315,11 @@ class filename_ui(QtWidgets.QMainWindow):
 			app.update_deparment()
 		elif self.category == 'task':
 			os.mkdir(new_dirname)
-			os.mkdir('{}/publish'.format(new_dirname))
-			os.mkdir('{}/workspace'.format(new_dirname))
 			app.update_task()
 		elif self.category == 'item':
-			os.mkdir('{}/publish/{}'.format(self.dirname, self.cui.name.text()))
-			os.mkdir('{}/workspace/{}'.format(self.dirname, self.cui.name.text()))
+			os.mkdir(new_dirname)
+			os.mkdir('{}/publish'.format(new_dirname))
+			os.mkdir('{}/workspace'.format(new_dirname))
 			app.update_item()
 		self.deleteLater()
 
