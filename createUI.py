@@ -43,7 +43,7 @@ class ui_name(object):
         self.ok.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.ok)
         self.verticalLayout_2.addLayout(self.verticalLayout)
-        MainWindow.setCentralWidget(self.centralwidget)
+        #MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

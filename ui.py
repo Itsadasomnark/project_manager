@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'D:/PRACTICUM/project_manager/project_manager_ui.ui'
 #
-# Created: Fri Jan 15 14:17:51 2021
+# Created: Thu Feb 18 16:25:24 2021
 #      by: pyside2-uic  running on PySide2 2.0.0~alpha0
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(724, 521)
+        MainWindow.resize(960, 729)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setEnabled(True)
         self.centralwidget.setObjectName("centralwidget")
@@ -301,6 +301,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setSpacing(7)
         self.verticalLayout_5.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setMinimumSize(QtCore.QSize(300, 200))
+        self.label.setSizeIncrement(QtCore.QSize(0, 0))
+        self.label.setBaseSize(QtCore.QSize(0, 0))
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.verticalLayout_5.addWidget(self.label)
         self.info = QtWidgets.QLabel(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -378,6 +390,11 @@ class Ui_MainWindow(object):
         self.save.setFont(font)
         self.save.setObjectName("save")
         self.verticalLayout_5.addWidget(self.save)
+        self.update_combo = QtWidgets.QComboBox(self.centralwidget)
+        self.update_combo.setObjectName("update_combo")
+        self.update_combo.addItem("")
+        self.update_combo.addItem("")
+        self.verticalLayout_5.addWidget(self.update_combo)
         self.publish_button = QtWidgets.QPushButton(self.centralwidget)
         self.publish_button.setMaximumSize(QtCore.QSize(325, 100))
         font = QtGui.QFont()
@@ -437,5 +454,7 @@ class Ui_MainWindow(object):
         self.open_button.setText(QtWidgets.QApplication.translate("MainWindow", "Open", None, -1))
         self.ref_button.setText(QtWidgets.QApplication.translate("MainWindow", "Ref", None, -1))
         self.save.setText(QtWidgets.QApplication.translate("MainWindow", "Save", None, -1))
+        self.update_combo.setItemText(0, QtWidgets.QApplication.translate("MainWindow", "Update", None, -1))
+        self.update_combo.setItemText(1, QtWidgets.QApplication.translate("MainWindow", "Final", None, -1))
         self.publish_button.setText(QtWidgets.QApplication.translate("MainWindow", "Publish", None, -1))
 

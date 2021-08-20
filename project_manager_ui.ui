@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>724</width>
-    <height>521</height>
+    <width>960</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -719,6 +719,37 @@ p, li { white-space: pre-wrap; }
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <item>
+         <widget class="QLabel" name="label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>300</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="sizeIncrement">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="info">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -883,6 +914,20 @@ p, li { white-space: pre-wrap; }
           <property name="text">
            <string>Save</string>
           </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="update_combo">
+          <item>
+           <property name="text">
+            <string>Update</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Final</string>
+           </property>
+          </item>
          </widget>
         </item>
         <item>
