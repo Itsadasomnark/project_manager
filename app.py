@@ -301,9 +301,9 @@ class Mainapp(QtWidgets.QMainWindow):
 		count = len(allfile)
 		os.mkdir('{}/V{:03d}'.format(publish, count))
 		shutil.copyfile(file,'{}/V{:03d}/{}V{:03d}.ma'.format(publish, count, newfile, count))
-		if self.capture.action == 'capture':
+		'''if self.capture.action == 'capture':
 			imageSnapshot = '{}/V{:03d}/{}V{:03d}_Snapshot.jpg'.format(publish, count, newfile, count)
-			mc.refresh(cv=True, fe = "jpg", fn = imageSnapshot)
+			mc.refresh(cv=True, fe = "jpg", fn = imageSnapshot)'''
 		check = file.split('/')
 		filters = [['name', 'is', self.ui.project_combo.currentText()]]
 		project = sg.find_one("Project", filters)
