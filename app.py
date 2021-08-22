@@ -284,8 +284,8 @@ class Mainapp(QtWidgets.QMainWindow):
 
 	def publish(self):
 		file = self.ui.Listfile.currentIndex().data(QtCore.Qt.UserRole)
-		self.capture.exec_()
-		print self.capture.action
+		#self.capture.exec_()
+		#print self.capture.action
 		newfile = file.split('/')[-1]
 		newfile = newfile.replace(file.split('_')[-1],'')
 		publish = file.split('\\')[0]
