@@ -460,7 +460,7 @@ class filename_ui(QtWidgets.QDialog):
 			
 			app.update_item()
 		self.deleteLater()
-class Capture(QtWidgets.QDialog):
+'''class Capture(QtWidgets.QDialog):
 	clicked = QtCore.Signal(object)
 	def __init__(self, parent=None):
 		super(Capture, self).__init__(parent=parent)
@@ -482,7 +482,7 @@ class Capture(QtWidgets.QDialog):
 	
 	def capture(self):
 		self.action = 'capture'
-		self.close()
+		self.close()'''
 
 
 def show():
