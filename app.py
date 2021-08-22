@@ -295,9 +295,9 @@ class Mainapp(QtWidgets.QMainWindow):
 			os.mkdir('{}/Hero'.format(publish))
 			allfile = os.listdir(publish)
 		shutil.copyfile(file,'{}/Hero/{}hero.ma'.format(publish, newfile))
-		if self.capture.action == 'capture':
+		'''if self.capture.action == 'capture':
 			imageSnapshot = '{}/Hero/{}hero_Snapshot.jpg'.format(publish, newfile)
-			mc.refresh(cv=True, fe = "jpg", fn = imageSnapshot)
+			mc.refresh(cv=True, fe = "jpg", fn = imageSnapshot)'''
 		count = len(allfile)
 		os.mkdir('{}/V{:03d}'.format(publish, count))
 		shutil.copyfile(file,'{}/V{:03d}/{}V{:03d}.ma'.format(publish, count, newfile, count))
