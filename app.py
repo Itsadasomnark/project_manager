@@ -36,7 +36,7 @@ class Mainapp(QtWidgets.QMainWindow):
 		self.ui.textEdit.setText(path)
 		self.setup_defaults()
 		self.connect()
-		self.capture = Capture(getMayaWindow())
+		#self.capture = Capture(getMayaWindow())
 	def setup_defaults(self):
 		self.setWindowTitle('Project Manager')
 		self.ui.project_combo.clear()
